@@ -72,8 +72,6 @@ const DashboardComponent = (props) => {
             }
         }
 
-        console.log(districtsData);
-
     return (
         <div>
             <div>Updated At: {props.action.source.data && props.action.source.data.updated_at}</div>
