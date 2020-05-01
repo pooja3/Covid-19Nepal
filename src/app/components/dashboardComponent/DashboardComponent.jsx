@@ -8,8 +8,23 @@ import Grid from "@material-ui/core/Grid";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
+import Box from "@material-ui/core/Box";
+import { makeStyles } from '@material-ui/core/styles';
 
 const DashboardComponent = (props) => {
+  const nepalFlag = require("../../../assets/images/flag.png");
+
+  const useStyles = makeStyles((theme) => ({
+    img: {
+      width: '2.2rem',
+      marginLeft: 10,
+      marginRight: 20,
+      marginTop: 10,
+    }
+  }));
+
+  const classes = useStyles();
+
   let summary = 0;
   let total = 0,
     active = 0,
@@ -115,35 +130,48 @@ const DashboardComponent = (props) => {
       <AppBar style={{ background: "#003893" }} position="static">
         <Toolbar variant="dense">
           <Typography variant="h6" color="inherit">
-            Nepal Covid-19 Statistics
+            Covid-19 Nepal
           </Typography>
         </Toolbar>
       </AppBar>
 
       <Container maxWidth="lg">
         <Grid container spacing={3}>
-          <Grid item xs={12} sm={6}>
-            <Typography variant="h6" color="inherit">
-              Updated at:{" "}
-              {props.action.source.data && props.action.source.data.updated_at}
+
+          <Grid item xs={12}>
+            <Typography variant="h3" color="inherit">
+              <Box textAlign="center" letterSpacing={3}>
+              <img className={classes.img} src={nepalFlag} alt="" />
+                COVID-19 NEPAL STATISTICS
+              </Box>
             </Typography>
           </Grid>
 
           <Grid item xs={12} sm={6}>
             <Typography variant="h6" color="inherit">
-              Total Cases: {total}
+              <Box textAlign="center">
+                Updated at:{" "}
+                {props.action.source.data &&
+                  props.action.source.data.updated_at}
+              </Box>
             </Typography>
           </Grid>
 
           <Grid item xs={12} sm={6}>
             <Typography variant="h6" color="inherit">
-              Active Cases: {active}
+              <Box textAlign="center">Total Cases: {total}</Box>
             </Typography>
           </Grid>
 
           <Grid item xs={12} sm={6}>
             <Typography variant="h6" color="inherit">
-              Recovered Cases: {recovered}
+              <Box textAlign="center">Active Cases: {active}</Box>
+            </Typography>
+          </Grid>
+
+          <Grid item xs={12} sm={6}>
+            <Typography variant="h6" color="inherit">
+              <Box textAlign="center">Recovered Cases: {recovered}</Box>
             </Typography>
           </Grid>
 
